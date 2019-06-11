@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolakGymDnevnik", "SolakGymDnevnik\SolakGymDnevnik.csproj", "{3428DC4F-E6D1-4785-86A4-8A732BF53C71}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SolakGymDnevnikInstaller", "SolakGymDnevnikInstaller\SolakGymDnevnikInstaller.vdproj", "{A2FDCDAF-2B40-4F16-812B-31CD01EFD5E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3428DC4F-E6D1-4785-86A4-8A732BF53C71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3428DC4F-E6D1-4785-86A4-8A732BF53C71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3428DC4F-E6D1-4785-86A4-8A732BF53C71}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3428DC4F-E6D1-4785-86A4-8A732BF53C71}.Debug|x86.Build.0 = Debug|Any CPU
+		{3428DC4F-E6D1-4785-86A4-8A732BF53C71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3428DC4F-E6D1-4785-86A4-8A732BF53C71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3428DC4F-E6D1-4785-86A4-8A732BF53C71}.Release|x86.ActiveCfg = Release|Any CPU
+		{3428DC4F-E6D1-4785-86A4-8A732BF53C71}.Release|x86.Build.0 = Release|Any CPU
+		{A2FDCDAF-2B40-4F16-812B-31CD01EFD5E6}.Debug|Any CPU.ActiveCfg = Debug
+		{A2FDCDAF-2B40-4F16-812B-31CD01EFD5E6}.Debug|Any CPU.Build.0 = Debug
+		{A2FDCDAF-2B40-4F16-812B-31CD01EFD5E6}.Debug|x86.ActiveCfg = Debug
+		{A2FDCDAF-2B40-4F16-812B-31CD01EFD5E6}.Release|Any CPU.ActiveCfg = Release
+		{A2FDCDAF-2B40-4F16-812B-31CD01EFD5E6}.Release|x86.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95527CAA-0478-4DBA-ADCF-C16B985267C4}
+	EndGlobalSection
+EndGlobal

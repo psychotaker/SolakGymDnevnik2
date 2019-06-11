@@ -1,0 +1,7 @@
+﻿CREATE PROCEDURE spGetMember
+     
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT * FROM Member;
+END
