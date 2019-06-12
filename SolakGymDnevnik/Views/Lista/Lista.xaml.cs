@@ -48,10 +48,9 @@ namespace SolakGymDnevnik.Views.Lista
             var members = dataContext.Members.ToList();
 
             var sortedMembersByExpirationTime = from member in members orderby member.ExpirationTime select member;
-            var sortedMembersByName = from member in members orderby member.Name select member;
 
-            var validMembers = from member in sortedMembersByExpirationTime where member.ExpirationTime > 0 select member;
-            var invalidMembers = from member in sortedMembersByName where member.ExpirationTime <= 0 select member;
+            var validMembers = from member in sortedMembersByExpirationTime where member.ExpirationTime >= 0 select member;
+            var invalidMembers = from member in sortedMembersByExpirationTime where member.ExpirationTime < 0 select member;
 
             lbClanovi.ItemsSource = validMembers;
             lbIstekliClanovi.ItemsSource = invalidMembers;
@@ -105,7 +104,7 @@ namespace SolakGymDnevnik.Views.Lista
             {
 
                 var selectedValid = (Member)lbClanovi.SelectedValue;
-                urediWindow.EditMember(selectedValid.Name,selectedValid.MembershipNumber ,selectedValid.PhoneNumber, selectedValid.Id);
+                urediWindow.EditMember(selectedValid.Name, selectedValid.MembershipNumber, selectedValid.PhoneNumber, selectedValid.Id);
                 urediWindow.Show();
                 Close();
             }
@@ -113,7 +112,7 @@ namespace SolakGymDnevnik.Views.Lista
             {
 
                 var selectedInvalid = (Member)lbIstekliClanovi.SelectedValue;
-                urediWindow.EditMember(selectedInvalid.Name,selectedInvalid.MembershipNumber, selectedInvalid.PhoneNumber, selectedInvalid.Id);
+                urediWindow.EditMember(selectedInvalid.Name, selectedInvalid.MembershipNumber, selectedInvalid.PhoneNumber, selectedInvalid.Id);
                 urediWindow.Show();
                 Close();
             }
@@ -127,7 +126,7 @@ namespace SolakGymDnevnik.Views.Lista
         public void BtnProduzi_OnClick(object sender, RoutedEventArgs e)
         {
             var produziWindow = new Produzi.Produzi();
-            var invalidMembers = from member in dataContext.Members where member.ExpirationTime <= 0 select member;
+            var invalidMembers = from member in dataContext.Members where member.ExpirationTime < 0 select member;
             lbIstekliClanovi.ItemsSource = invalidMembers;
 
             if (lbIstekliClanovi.SelectedValue != null)
@@ -153,6 +152,66 @@ namespace SolakGymDnevnik.Views.Lista
             var glavni = new Glavni.Glavni();
             glavni.Show();
             this.Close();
+        }
+
+        private void MembershipNumber_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var members = dataContext.Members.ToList();
+            var sortedMembersByMembershipNumber = from member in members orderby member.MembershipNumber select member;
+            var validMembers = from member in sortedMembersByMembershipNumber where member.ExpirationTime >= 0 select member;
+            lbClanovi.ItemsSource = validMembers;
+        }
+
+        private void MembershipNumberInvalidMembers_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var members = dataContext.Members.ToList();
+            var sortedMembersByMembershipNumber = from member in members orderby member.MembershipNumber select member;
+            var invalidMembers = from member in sortedMembersByMembershipNumber where member.ExpirationTime < 0 select member;
+            lbIstekliClanovi.ItemsSource = invalidMembers;
+        }
+
+        private void Name_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var members = dataContext.Members.ToList();
+            var sortedMembersByName = from member in members orderby member.Name select member;
+            var validMembers = from member in sortedMembersByName where member.ExpirationTime >= 0 select member;
+            lbClanovi.ItemsSource = validMembers;
+        }
+        private void NameInvalidMembers_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var members = dataContext.Members.ToList();
+            var sortedMembersByName = from member in members orderby member.Name select member;
+            var invalidMembers = from member in sortedMembersByName where member.ExpirationTime < 0 select member;
+            lbIstekliClanovi.ItemsSource = invalidMembers;
+        }
+
+        private void MemebershipDuration_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var members = dataContext.Members.ToList();
+            var sortedMembersByMembershipDuration = from member in members orderby member.MembershipDuration select member;
+            var validMembers = from member in sortedMembersByMembershipDuration where member.ExpirationTime >= 0 select member;
+            lbClanovi.ItemsSource = validMembers;
+        }
+        private void MemebershipDurationInvalidMembers_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var members = dataContext.Members.ToList();
+            var sortedMembersByMembershipDuration = from member in members orderby member.MembershipDuration select member;
+            var invalidMembers = from member in sortedMembersByMembershipDuration where member.ExpirationTime < 0 select member;
+            lbIstekliClanovi.ItemsSource = invalidMembers;
+        }
+
+        private void ExpirationTime_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var members = dataContext.Members.ToList();
+            var sortedMembersByExpirationTime = from member in members orderby member.ExpirationTime select member;
+            var validMembers = from member in sortedMembersByExpirationTime where member.ExpirationTime >= 0 select member;
+            lbClanovi.ItemsSource = validMembers;
+
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            dataContext.SubmitChanges();
         }
     }
 }

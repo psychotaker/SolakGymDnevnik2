@@ -92,6 +92,8 @@ namespace SolakGymDnevnik
 		
 		private int _ExpirationTime;
 		
+		private string _Remark;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -108,6 +110,8 @@ namespace SolakGymDnevnik
     partial void OnMembershipDurationChanged();
     partial void OnExpirationTimeChanging(int value);
     partial void OnExpirationTimeChanged();
+    partial void OnRemarkChanging(string value);
+    partial void OnRemarkChanged();
     #endregion
 		
 		public Member()
@@ -124,6 +128,15 @@ namespace SolakGymDnevnik
             ExtendtMembershipByMonth(membershipDuration);
         }
 
+        public Member(string name, int membershipNumber, string phoneNumber, DateTime membershipDuration)
+        {
+            OnCreated();
+            Name = name;
+            MembershipNumber = membershipNumber;
+            PhoneNumber = phoneNumber;
+            ExtendtMembershipByDate(membershipDuration);
+        }
+
         public void ExtendtMembershipByMonth(int membershipDuration)
         {
             MembershipDuration = DateTime.Today.AddMonths(membershipDuration);
@@ -131,7 +144,14 @@ namespace SolakGymDnevnik
 
         }
 
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+        public void ExtendtMembershipByDate(DateTime membershipDuration)
+        {
+            MembershipDuration = membershipDuration;
+            ExpirationTime = (MembershipDuration - DateTime.Today).Days;
+
+        }
+
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get
@@ -247,6 +267,26 @@ namespace SolakGymDnevnik
 					this._ExpirationTime = value;
 					this.SendPropertyChanged("ExpirationTime");
 					this.OnExpirationTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remark", DbType="NVarChar(MAX)")]
+		public string Remark
+		{
+			get
+			{
+				return this._Remark;
+			}
+			set
+			{
+				if ((this._Remark != value))
+				{
+					this.OnRemarkChanging(value);
+					this.SendPropertyChanging();
+					this._Remark = value;
+					this.SendPropertyChanged("Remark");
+					this.OnRemarkChanged();
 				}
 			}
 		}

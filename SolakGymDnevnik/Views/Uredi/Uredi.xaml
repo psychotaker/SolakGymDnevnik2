@@ -21,13 +21,13 @@
             <Button
                 x:Name="button" Content="Uredi" FontFamily="Impact" FontSize="30" HorizontalAlignment="Center" Margin="0,20,0,0"  VerticalAlignment="Top" Width="120" Height="60" Click="Button_Click"
                 Style="{StaticResource MaterialDesignRaisedButton}"
-                ToolTip="Uredi">
+                ToolTip="Uredi podatke o članu">
             </Button>
         </StackPanel>
         <Button
             Name="BtnBack" Content="Nazad" Click="BtnBack_OnClick" Width="80" Height="30" HorizontalAlignment="Left" Margin="10,420,0,0"
             Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Vratite se nazad">
+            ToolTip="Vrati nazad">
         </Button>
     </Grid>
 </Window>

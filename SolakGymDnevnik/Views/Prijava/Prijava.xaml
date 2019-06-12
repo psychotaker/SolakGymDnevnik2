@@ -61,7 +61,7 @@
         <Button
             Name="BtnBack" Content="Nazad" Click="BtnBack_OnClick" Width="80" Height="30" HorizontalAlignment="Left" Margin="10,370,0,0"
             Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Vratite se nazad">
+            ToolTip="Vrati nazad">
         </Button>
         <PasswordBox Name="pbPassword" MaxLength="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,70,0,0" Height="40" Width="202.272" PreviewMouseDown="PbPassword_PreviewMouseDown" Template="{DynamicResource PasswordBoxControlTemplate1}"/>
     </Grid>

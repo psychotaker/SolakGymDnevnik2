@@ -2,10 +2,10 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SolakGymDnevnikDataClasses">
   <DataContextMoniker Name="/SolakGymDnevnikDataClassesDataContext" />
   <nestedChildShapes>
-    <classShape Id="524d200a-23ee-4f52-9b02-ffdb4300a288" absoluteBounds="1, 1.375, 2, 1.9631982421875">
+    <classShape Id="ef78e959-6e95-4764-a7d1-701b4bdc616b" absoluteBounds="0.5, 1.125, 2, 2.1554996744791666">
       <DataClassMoniker Name="/SolakGymDnevnikDataClassesDataContext/Member" />
       <nestedChildShapes>
-        <elementListCompartment Id="112b96a7-8c67-4a1d-884b-4fd12083c57d" absoluteBounds="1.0149999999999997, 1.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="cc7f5d84-407e-403f-9f4f-f07db6806cf2" absoluteBounds="0.51499999999999968, 1.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

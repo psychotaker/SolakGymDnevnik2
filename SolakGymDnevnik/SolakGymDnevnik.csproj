@@ -137,9 +137,6 @@
     <Compile Include="SetupInstaller.Designer.cs">
       <DependentUpon>SetupInstaller.cs</DependentUpon>
     </Compile>
-    <Compile Include="SolakGymDnevnikDataClasses.cs">
-      <DependentUpon>SolakGymDnevnikDataClasses.dbml</DependentUpon>
-    </Compile>
     <Compile Include="SolakGymDnevnikDataClasses.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -152,15 +149,19 @@
     </Compile>
     <Compile Include="Views\Novi\Novi.xaml.cs">
       <DependentUpon>Novi.xaml</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Views\Prijava\Prijava.xaml.cs">
       <DependentUpon>Prijava.xaml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Views\Produzi\Produzi.xaml.cs">
       <DependentUpon>Produzi.xaml</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Views\Uredi\Uredi.xaml.cs">
       <DependentUpon>Uredi.xaml</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Page Include="Images\solakGymLogo.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -173,10 +174,12 @@
     <Page Include="Views\Glavni\Glavni.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\Lista\Lista.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -184,25 +187,31 @@
     </Compile>
     <Compile Include="Views\Glavni\Glavni.xaml.cs">
       <DependentUpon>Glavni.xaml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Views\Lista\Lista.xaml.cs">
       <DependentUpon>Lista.xaml</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Page Include="Views\Novi\Novi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\Prijava\Prijava.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\Produzi\Produzi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\Uredi\Uredi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
   </ItemGroup>
   <ItemGroup>

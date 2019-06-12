@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:SolakGymDnevnik.Views.Produzi"
         mc:Ignorable="d"
         Title="Produzi" Height="350" Width="400" WindowStartupLocation="CenterScreen">
@@ -10,9 +11,10 @@
         <StackPanel Margin="0,40,0,0">
             <TextBlock x:Name="tbProduziTitle" HorizontalAlignment="Center" FontFamily="Impact" FontSize="18" Text="Produži članarinu za " TextAlignment="Center" Height="25.303" Width="200"/>
             <TextBlock x:Name="tbMemberName" HorizontalAlignment="Center" FontSize="18" Text="Ime člana" Margin="0,5,0,0" TextAlignment="Center" Height="25.303" Width="300"/>
-            <TextBlock x:Name="tbMonthTitle" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Impact" FontSize="18" Margin="0,20,0,0" Text="Mjeseci" TextAlignment="Center" Height="25.303" Width="102"/>
-            <TextBox x:Name="tbMonth" HorizontalAlignment="Center" Height="40" MaxLength="2" TextAlignment="Center" Padding="5" Width="60" PreviewMouseDown="TbMonth_PreviewMouseDown" Style="{DynamicResource SimpleTextBox}"/>
-            <TextBlock x:Name="tbMonthIncorrect" Visibility="Collapsed" HorizontalAlignment="Center" FontSize="12" Foreground="Red"  TextAlignment="Center" TextWrapping="Wrap" Text="Unesi 1-12!" VerticalAlignment="Top" Height="25.303" Width="65"/>
+            <TextBlock x:Name="tbMonthTitle" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Impact" FontSize="18" Margin="0,20,0,0" Text="Datum" TextAlignment="Center" Height="25.303" Width="102"/>
+            <DatePicker x:Name="DatePicker" Width="105" materialDesign:HintAssist.Hint="Odaberi datum" PreviewMouseDown="DatePicker_PreviewMouseDown" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            
+            <TextBlock x:Name="tbMonthIncorrect" Visibility="Collapsed" HorizontalAlignment="Center" FontSize="12" Foreground="Red"  TextAlignment="Center" TextWrapping="Wrap" Text="Datum nevažeći!" VerticalAlignment="Top" Height="25.303" Width="125"/>
             <Button
                 x:Name="button" Content="Produži" FontFamily="Impact" FontSize="18" HorizontalAlignment="Center" Margin="0,20,0,0" Width="90" Height="40"
                 Style="{StaticResource MaterialDesignRaisedButton}"

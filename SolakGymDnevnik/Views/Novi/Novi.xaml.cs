@@ -32,19 +32,24 @@ namespace SolakGymDnevnik.Views.Novi
         }
         public void AddMember()
         {
+            var selectedDate = DateTime.Today;
+
+            if (DatePicker.SelectedDate.HasValue)
+                selectedDate = DatePicker.SelectedDate.Value;
+
             try
             {
-                if (!String.IsNullOrWhiteSpace(tbName.Text) && !String.IsNullOrWhiteSpace(tbPhoneNumber.Text) && !String.IsNullOrWhiteSpace(tbMonth.Text))
+                if (!String.IsNullOrWhiteSpace(tbMembershipNumber.Text) && !String.IsNullOrWhiteSpace(tbName.Text) && !String.IsNullOrWhiteSpace(tbPhoneNumber.Text))
                 {
-                    if (CheckInput(tbName.Text, tbMembershipNumber.Text, tbPhoneNumber.Text, tbMonth.Text))
+                    if (CheckInput(tbName.Text, tbMembershipNumber.Text, tbPhoneNumber.Text, selectedDate))
                     {
-                        var newMemeber = new Member(tbName.Text, Convert.ToInt32(tbMembershipNumber.Text), tbPhoneNumber.Text, Convert.ToInt32(tbMonth.Text));
+                        var newMemeber = new Member(tbName.Text, Convert.ToInt32(tbMembershipNumber.Text), tbPhoneNumber.Text, selectedDate);
                         dataContext.Members.InsertOnSubmit(newMemeber);
                         dataContext.SubmitChanges();
                         tbName.Text = null;
                         tbMembershipNumber.Text = null;
                         tbPhoneNumber.Text = null;
-                        tbMonth.Text = null;
+                        DatePicker.SelectedDate = null;
                     }
                 }
                 else
@@ -58,17 +63,16 @@ namespace SolakGymDnevnik.Views.Novi
             }
         }
 
-        public bool CheckInput(string Name, string MembershipNumber, string PhoneNumber, string Month)
+        public bool CheckInput(string Name, string MembershipNumber, string PhoneNumber, DateTime Date)
         {
             var inputCorrect = false;
             bool contains = dataContext.Members.AsEnumerable().Any(row => Convert.ToInt32(MembershipNumber) == row.MembershipNumber);
             Match matchPhoneNumber = Regex.Match(PhoneNumber, @"\d");
             Match matchName = Regex.Match(Name, @"[A-Z]");
             Match matchMembershipNumber = Regex.Match(MembershipNumber, @"\d");
-            Match matchMonth = Regex.Match(Month, @"\d");
-            var MonthValue = Convert.ToInt32(Month);
+            var matchDate = (Date - DateTime.Today).Days;
             var MembershipNumberValue = Convert.ToInt32(MembershipNumber);
-            if (!matchName.Success && !matchMembershipNumber.Success && !matchPhoneNumber.Success && !matchMonth.Success)
+            if (!matchName.Success && !matchMembershipNumber.Success && !matchPhoneNumber.Success)
             {
                 tbNameIncorrect.Visibility = Visibility.Visible;
                 tbMembershipNumberIncorrect.Visibility = Visibility.Visible;
@@ -83,8 +87,9 @@ namespace SolakGymDnevnik.Views.Novi
             {
                 tbPhoneNumberIncorrect.Visibility = Visibility.Visible;
             }
-            else if (!matchMonth.Success || !(MonthValue <= 12 && MonthValue >= 1))
+            else if (matchDate < 0)
             {
+                tbMonthIncorrect.Text = "Datum nevažeći!";
                 tbMonthIncorrect.Visibility = Visibility.Visible;
             }
             else if (!matchMembershipNumber.Success || MembershipNumberValue < 1)
@@ -127,7 +132,7 @@ namespace SolakGymDnevnik.Views.Novi
             tbNameIncorrect.Visibility = Visibility.Collapsed;
         }
 
-        private void TbMonth_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void DatePicker_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             tbMonthIncorrect.Visibility = Visibility.Collapsed;
         }

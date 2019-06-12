@@ -1,22 +1,25 @@
 ﻿USE [SolakGymDnevnikDb]
 
-/****** Object:  Table [dbo].[Member]    Script Date: 11-Jun-19 12:00:07 AM ******/
+/****** Object:  Table [dbo].[Member]    Script Date: 11-Jun-19 2:41:38 PM ******/
 DROP TABLE [dbo].[Member]
 
-/****** Object:  Table [dbo].[Member]    Script Date: 11-Jun-19 12:00:07 AM ******/
+/****** Object:  Table [dbo].[Member]    Script Date: 11-Jun-19 2:41:38 PM ******/
 SET ANSI_NULLS ON
 
 SET QUOTED_IDENTIFIER ON
 
 CREATE TABLE [dbo].[Member](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[MembershipNumber] [int] NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
 	[PhoneNumber] [nvarchar](50) NOT NULL,
 	[MembershipDuration] [datetime] NOT NULL,
 	[ExpirationTime] [int] NOT NULL,
+	[Remark] [nvarchar](max) NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY];
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+
+

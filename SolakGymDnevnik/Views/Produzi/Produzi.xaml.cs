@@ -40,9 +40,14 @@ namespace SolakGymDnevnik.Views.Produzi
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckInput(tbMonth.Text))
+            var selectedDate = DateTime.Today;
+
+            if (DatePicker.SelectedDate.HasValue)
+                selectedDate = DatePicker.SelectedDate.Value;
+
+            if (CheckInput(selectedDate))
             {
-                selectedMember.ExtendtMembershipByMonth(Convert.ToInt32(tbMonth.Text));
+                selectedMember.ExtendtMembershipByDate(selectedDate);
 
                 dataContext.SubmitChanges();
 
@@ -50,6 +55,7 @@ namespace SolakGymDnevnik.Views.Produzi
                 listaWindow.Show();
                 this.Close();
             }
+
         }
 
         private void BtnBack_OnClick(object sender, RoutedEventArgs e)
@@ -59,24 +65,20 @@ namespace SolakGymDnevnik.Views.Produzi
             this.Close();
         }
 
-        public bool CheckInput(string Month)
+        public bool CheckInput(DateTime date)
         {
-            var inputCorrect = false;
-            Match matchMonth = Regex.Match(Month, @"\d");
-            var MonthValue = Convert.ToInt32(Month);
-            if (!matchMonth.Success || !(MonthValue <= 12 && MonthValue >= 1))
-            {
+            var inputCorrect = true;
+            var matchDate = (date - DateTime.Today).Days;
+
+            if (matchDate < 0)
+                inputCorrect = false;
+                tbMonthIncorrect.Text = "Datum nevažeći!";
                 tbMonthIncorrect.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                inputCorrect = true;
-            }
 
             return inputCorrect;
         }
 
-        private void TbMonth_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        private void DatePicker_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             tbMonthIncorrect.Visibility = Visibility.Collapsed;
         }
