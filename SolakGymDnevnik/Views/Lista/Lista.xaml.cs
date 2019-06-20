@@ -126,10 +126,15 @@ namespace SolakGymDnevnik.Views.Lista
         public void BtnProduzi_OnClick(object sender, RoutedEventArgs e)
         {
             var produziWindow = new Produzi.Produzi();
-            var invalidMembers = from member in dataContext.Members where member.ExpirationTime < 0 select member;
-            lbIstekliClanovi.ItemsSource = invalidMembers;
-
-            if (lbIstekliClanovi.SelectedValue != null)
+            CreatingMembersListObject();
+            if (lbClanovi.SelectedValue != null)
+            {
+                var selectedValid = (Member)lbClanovi.SelectedValue;
+                produziWindow.Clan(selectedValid.Name, selectedValid.Id);
+                produziWindow.Show();
+                Close();
+            }
+            else if (lbIstekliClanovi.SelectedValue != null)
             {
                 var selectedInvalid = (Member)lbIstekliClanovi.SelectedValue;
                 produziWindow.Clan(selectedInvalid.Name, selectedInvalid.Id);
